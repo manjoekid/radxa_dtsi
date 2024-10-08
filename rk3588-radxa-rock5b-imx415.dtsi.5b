@@ -158,17 +158,10 @@
 };
 
 &uart2 {
-        compatible = "rockchip,rk3588-uart", "snps,dw-apb-uart";
-        reg = <0x0 0xfeb50000 0x0 0x100>;
-        interrupts = <GIC_SPI 333 IRQ_TYPE_LEVEL_HIGH>;
-        clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
-        clock-names = "baudclk", "apb_pclk";
-        reg-shift = <2>;
-        reg-io-width = <4>;
-        dmas = <&dmac0 10>, <&dmac0 11>;
+        status = "okay";
+        rockchip,baudrate = <115200>;        
         pinctrl-names = "default";
         pinctrl-0 = <&uart2m0_xfer>;
-        status = "okay";
 };
 
 
@@ -181,7 +174,6 @@
 &uart7 {
         status = "okay";
         rockchip,baudrate = <115200>;
-        pinctrl-0 = <&uart7m1_xfer>;
 };
 
 /{
@@ -189,19 +181,8 @@
     gpio_iputs: gpio_iputs{
         status = "okay";
 		rockchip,pins =
-				<1 RK_PA3 0 &pcfg_pull_up_drv_level_6>,
-				<1 RK_PA2 0 &pcfg_pull_up_drv_level_6>,
-                                <3 RK_PC2 0 &pcfg_pull_up_drv_level_6>,
-                                <3 RK_PC3 0 &pcfg_pull_up_drv_level_6>,
-                                <4 RK_PC4 0 &pcfg_pull_up_drv_level_6>,
-                                <4 RK_PC6 0 &pcfg_pull_up_drv_level_6>;                                
-
-		gpios = 
-                        <1 RK_PA3 GPIO_ACTIVE_HIGH>, 
-                        <1 RK_PA2 GPIO_ACTIVE_HIGH>,
-                        <3 RK_PC2 GPIO_ACTIVE_HIGH>,
-                        <3 RK_PC3 GPIO_ACTIVE_HIGH>,
-                        <4 RK_PC4 GPIO_ACTIVE_HIGH>,
-                        <4 RK_PC6 GPIO_ACTIVE_HIGH>;
+				<1 RK_PD7 0 &pcfg_pull_up_drv_level_6>,
+				<1 RK_PB7 0 &pcfg_pull_up_drv_level_6>;
+		gpios = <1 RK_PD7 GPIO_ACTIVE_HIGH>, <1 RK_PB7 GPIO_ACTIVE_HIGH>;
 	};
 };
